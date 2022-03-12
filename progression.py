@@ -1,7 +1,4 @@
 #!/usr/bin/python3
-#TODO https://strategywiki.org/wiki/Castlevania:_Aria_of_Sorrow
-#TODO with door-randomizer, make 2-way portals using teleporter rooms!
-#TODO ideally the entrance door randomizer would put the player in a save room?
 #TODO a full in-game review or accesses and completions would be a long-term goal
 CORRIDOR='Castle corridor'
 CHAPEL='Chapel'
@@ -19,7 +16,7 @@ TOP='Top floor'
 
 # making these Solvables would add to the complexity, let's try to in-line them where possible first
 FLIGHT=['Giant bat']
-SINK=['Skula']
+SINK=['Skula']#TODO can you sink as bat?
 WATERWALK=['Undine']+FLIGHT
 SLIDE=['Skeleton blitz'] #TODO can you "slide" through narrow passages as bat?
 JUMP=['Malapahas']+FLIGHT
