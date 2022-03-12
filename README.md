@@ -1,2 +1,3 @@
-# A Rando of Sorrow (Castlevania: Aria of Sorrow randomizer)
+# A Rando of Sorrow
 
+AROS is a Castlevania: Aria of Sorrow randomizer.
