@@ -15,6 +15,7 @@ TOP='Top floor'
 #TODO CHAOS='Chaotic realm'
 
 # making these Solvables would add to the complexity, let's try to in-line them where possible first
+BACKDASH=['Grave keeper']#not used in progression logic but have it here for uniformity's sake
 FLIGHT=['Giant bat']
 SINK=['Skula']#TODO can you sink as bat?
 WATERWALK=['Undine']+FLIGHT
