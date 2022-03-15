@@ -1,2 +1,4 @@
 reference/
 __pycache__/
+*.gba
+aros.*.txt

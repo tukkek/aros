@@ -59,8 +59,6 @@ teleporters={
   TOP:Solvable([[TOP],FLIGHT])
 }
 
-#TODO corridor -> dance hall can be done with jump + glide, same for corridor->quarters
-#TODO in quarters, jump past undine is doable with only djump
 areas={
   CORRIDOR:Solvable(#TODO can you do the boss if you sequence-break?
     access=[teleporters[t].access for t in teleporters if t!=CORRIDOR]+
@@ -69,7 +67,7 @@ areas={
        [[GARDEN]],
        [[TOWER],SINK],
        [[CHAPEL]],#TODO assuming you don't need jump 
-       [[QUARTERS],WATERWALK,JUMP]], #through top floor TODO is jump required after undine?
+       [[QUARTERS],WATERWALK,JUMP]],#through top floor
     completion=[]),
   CHAPEL:Solvable(
     access=
@@ -110,7 +108,7 @@ areas={
   #TODO FORBIDDEN:Solvable(access=[],completion=[]),
   TOP:Solvable(#better to ignore lower room, treat it as Quarter-Corridor connection (elsewhere as well)
     access=#shortcut to tower is blocked from our side
-      [[[QUARTERS],JUMP,WATERWALK,FLIGHT],#from teleport just walk TODO confirm jump required
+      [[[QUARTERS],JUMP,WATERWALK,FLIGHT],
        [[CORRIDOR],FLIGHT]],#TODO confirm flight required
     completion=[FLIGHT]),
   #TODO CHAOS:Solvable(access=[],completion=[])

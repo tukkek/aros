@@ -29,7 +29,7 @@ class Solver:
         continue
       if progression.areas[a].enter(self):
         self.progress.add(a)
-        #self.actions.append(f'Can now enter: {a}!')
+        self.actions.append(f'Can now enter: {a}!')
         advancement=True
         if a==progression.TOP and self.done():
           self.actions.append('Done.')
