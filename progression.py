@@ -59,6 +59,8 @@ teleporters={
   TOP:Solvable([[TOP],FLIGHT])
 }
 
+#TODO corridor -> dance hall can be done with jump + glide, same for corridor->quarters
+#TODO in quarters, jump past undine is doable with only djump
 areas={
   CORRIDOR:Solvable(#TODO can you do the boss if you sequence-break?
     access=[teleporters[t].access for t in teleporters if t!=CORRIDOR]+
