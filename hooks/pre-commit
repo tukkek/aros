@@ -2,8 +2,12 @@
 import datetime,os,sys
 
 FILE='version.txt'
+DATE=datetime.date.today().isoformat()
 
-print(datetime.date.today().isoformat(),file=open(FILE,'w'))
-if os.system('git diff -s --exit-code '+FILE)!=0:
-  print(f'Aborting: commit new {FILE} or use --no-verify.')
-  sys.exit(1) #in-lining the system() call is not working for some reason
+with open(FILE) as f:
+  if f.read().strip()==DATE:
+    sys.exit(0)
+
+print(DATE,file=open(FILE,'w'))
+print(f'Aborting: commit new {FILE} or use --no-verify.')
+sys.exit(1) #aborts commit
