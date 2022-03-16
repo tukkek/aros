@@ -3,7 +3,7 @@ import progression,random
 
 class Solver:
   def __init__(self,root,rewards):
-    self.progress=set([root])
+    self.progress=[root]
     self.actions=[f'Arrive at {root}.']
     self.rewards=rewards
   
@@ -19,7 +19,7 @@ class Solver:
       if not r in self.progress or reward in self.progress:
         continue
       if progression.areas[r].complete(self):
-        self.progress.add(reward)
+        self.progress.append(reward)
         self.actions.append(f'Acquired {reward} in {r}.')
         advancement=True
         if reward==progression.FLIGHT[0] and self.done():
@@ -28,7 +28,7 @@ class Solver:
       if a in self.progress:
         continue
       if progression.areas[a].enter(self):
-        self.progress.add(a)
+        self.progress.append(a)
         self.actions.append(f'Can now enter: {a}!')
         advancement=True
         if a==progression.TOP and self.done():
