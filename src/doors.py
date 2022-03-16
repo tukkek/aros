@@ -1,6 +1,7 @@
 #TODO joining teleporter rooms together would be a long term goal for extra routing possibilities?
-import rom,progression
+import rom,progression,args
 
+DEBUG=progression.CORRIDOR
 ADDRESS=0x004F0D8C
 VALUES={
   progression.CHAPEL:bytes([0x01,0x0E]),
@@ -15,6 +16,6 @@ VALUES={
 }
 
 def generate(solver,generated):
-  entrance=solver.progress[0]
+  entrance=DEBUG if args.debug else solver.progress[0]
   if entrance!=progression.CORRIDOR:
     rom.write(VALUES[entrance],ADDRESS,generated)
