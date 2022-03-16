@@ -1,0 +1,9 @@
+#!/usr/bin/python3
+import datetime,os,sys
+
+FILE='version.txt'
+
+print(datetime.date.today().isoformat(),file=open(FILE,'w'))
+if os.system('git diff -s --exit-code '+FILE)!=0:
+  print(f'Aborting: commit new {FILE} or use --no-verify.')
+  sys.exit(1) #in-lining the system() call is not working for some reason

@@ -30,6 +30,12 @@ AROS is an opinionated *Castlevania: Aria of Sorrow* randomizer: instead of allo
 
 You can also run the script in step #4, via a termainl emulator, with the `--help` flag to see more options.
 
+# Development
+
+After cloning the repository, configure the versioning commit hook with:
+
+    git config core.hooksPath hooks/
+
 # Credits
 
 **ԠДD ЯԐSPԐҚ** for:
