@@ -28,6 +28,8 @@ AROS is an opinionated *Castlevania: Aria of Sorrow* randomizer: instead of allo
 6. If you haven't yet, install [a GBA emulator](https://www.emulatorgames.net/emulators/gameboy-advance/).
 7. Have fun!
 
+You can also run the script in step #4, via a termainl emulator, with the `--help` flag to see more options.
+
 # Credits
 
 **ԠДD ЯԐSPԐҚ** for:
