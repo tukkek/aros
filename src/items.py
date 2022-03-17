@@ -1,5 +1,18 @@
 import progression,rom
 
+VANILLA={
+  progression.CORRIDOR:progression.BACKDASH[0],#only one per area so ignore glide
+  #progression.CHAPEL:,
+  progression.STUDY:progression.JUMP[0],
+  progression.HALL:progression.SLIDE[0],
+  progression.QUARTERS:progression.WATERWALK[0],
+  #progression.GARDEN:,
+  progression.TOWER:progression.SINK[0],
+  #progression.RESERVOIR:,
+  progression.ARENA:progression.FLIGHT[0],
+  #progression.TOP:)
+}
+
 class Item:
   def __init__(self,address):
     self.index=address#2 bytes
@@ -8,10 +21,11 @@ class Item:
   def replace(self,item,vanilla,generated):
     rom.copy(self.category,item.category,vanilla,generated)
     rom.copy(self.index,item.index,vanilla,generated)
+    
+shortsword=Item(0x510bf9),#first acessible item, for debugging
+dash=Item(0x520bbd),#also useful for debugging
 
 items={
-  'shortsword':Item(0x510bf9),#first acessible item, for debugging
-  'black panther':Item(0x520bbd),#also useful for debugging
   progression.BACKDASH[0]:Item(0x510c1d),
   progression.GLIDE[0]:Item(0x511145),
   progression.JUMP[0]:Item(0x513af1),
@@ -22,8 +36,6 @@ items={
 }
 
 def generate(rewards,vanilla,generated):
-  replace={
-    #'black panther':progression.BACKDASH[0]
-  }
-  for r in replace:
-    items[r].replace(items[replace[r]],vanilla,generated)
+  for area in rewards:
+    if area in VANILLA:#TODO
+      items[rewards[area]].replace(items[VANILLA[area]],vanilla,generated)
