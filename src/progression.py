@@ -91,7 +91,7 @@ areas={
     access=
       [[[CORRIDOR],WATERWALK,JUMP],
        [[TOWER],JUMP,SINK]], #TODO from save im going to assume only jump but try less - from TP also sink, possibly WATERWALK?
-    completion=[]),#TODO confirm it can be done without abilities
+    completion=[JUMP]),
   TOWER:Solvable(
     access=
       [[[GARDEN]],#TODO confirm no abilities required
