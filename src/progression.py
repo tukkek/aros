@@ -20,7 +20,7 @@ FLIGHT=['Giant bat']
 SINK=['Skula']#TODO can you sink as bat?
 WATERWALK=['Undine']+FLIGHT
 SLIDE=['Skeleton blitz'] #TODO can you "slide" through narrow passages as bat?
-JUMP=['Malapahas']+FLIGHT
+JUMP=['Malphas']+FLIGHT
 GLIDE=['Flying armor']+FLIGHT#TODO is every glide solvable with jump?
 #TODO Hippogryph
 
