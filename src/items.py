@@ -35,7 +35,7 @@ EXCLUDE=[26+i for i in range(6)] #books and maps
 SHORTSWORD=0x510bf9#first acessible item from Corridor start, for testing
 DASH=0x520bbd#black panther, for testing
 EARLY=[0x510c11,SHORTSWORD,0x51cbf5]#couple rooms near the first Corridor safe, for testing
-GOLD=[1,10,50,100,500,1000,2000]#TODO im just assuming this is the right order for now
+GOLD=[1,10,50,100,500,1000,2000]#$100 to $2,000 have been confirmed
 
 class Loot:#an item in a room
   def __init__(self,address):
@@ -126,7 +126,6 @@ def generate(rewards,vanilla,generated):
       item=category[item]
       item.load(vanilla)
       items.append(item)
-      #print(hex(item.address))
   clear(generated)
   populate(vanilla,generated)
   for area in rewards:
