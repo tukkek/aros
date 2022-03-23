@@ -1,17 +1,20 @@
-def read(rom,at,length=2):
-  rom.seek(at)
-  return rom.read(length)
+class Rom:
+  def __init__(self,gba):
+    self.gba=gba
 
-def write(value,at,rom):
-  rom.seek(at)
-  rom.write(value)
+  def read(self,at,length=2):
+    self.gba.seek(at)
+    return self.gba.read(length)
 
-def copy(a,b,vanilla,generated,length=2):
-  a=read(vanilla,a,length)
-  write(a,b,generated)
+  def write(self,value,at):
+    self.gba.seek(at)
+    self.gba.write(value)
 
-def readint(at,rom,length=2):
-  return int.from_bytes(read(rom,at,length),byteorder='little')
+  def copy(self,a,b,rom,length=2):
+    rom.write(self.read(a,length),b)
 
-def writeint(i,at,rom,length=2):
-  write(int(i).to_bytes(length,byteorder='little'),at,rom)
+  def readint(self,at,length=2):
+    return int.from_bytes(self.read(at,length),byteorder='little')
+
+  def writeint(self,i,at,length=2):
+    self.write(int(i).to_bytes(length,byteorder='little'),at)

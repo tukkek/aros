@@ -1,5 +1,3 @@
-import rom
-
 STARTINGSOUL=[0x0]*2
 #TODO assuming this is the memory override, we could maybe start without any items - might be interesting if not prohibibite for later area spawns
 STARTINGSHOP={#mostly to skip intro, especially when enterting the room from a different starting location
@@ -9,4 +7,4 @@ STARTINGSHOP={#mostly to skip intro, especially when enterting the room from a d
 
 def generate(generated):
   for address in STARTINGSHOP:
-    rom.write(STARTINGSHOP[address],address,generated)
+    generated.write(STARTINGSHOP[address],address)

@@ -1,4 +1,4 @@
-import progression,rom,args,rpg,categories,monsters
+import progression,args,rpg,categories,monsters
 
 LOOT=[0x5109dd,0x510af1,0x510afd,0x510bf9,0x510c11,0x510c1d,0x510dd9,0x510ed5,0x510f65,0x510fad,0x51103d,0x511145,0x5114c9,0x511565,0x511619,0x51163d,0x511715,0x511739,0x511769,0x51187d,0x51250d,0x5125cd,0x5125d9,0x512609,0x512615,0x512669,0x51271d,0x5127a1,0x5128f1,0x512939,0x5129c9,0x512a05,0x513875,0x5138f9,0x513911,0x513af1,0x513be1,0x513bf9,0x513c59,0x513c71,0x513d0d,0x513dfd,0x513ebd,0x51515d,0x5151a5,0x5152ad,0x5153f1,0x5154a5,0x51554d,0x5155d1,0x515781,0x516829,0x516835,0x51696d,0x516abd,0x516c9d,0x516d09,0x516d15,0x51714d,0x517d91,0x517e2d,0x517f1d,0x518175,0x518235,0x518301,0x5199d1,0x519cad,0x519f7d,0x51a0fd,0x51a3cd,0x51cbf5,0x51cd39,0x51cd5d,0x51ce05,0x51d015,0x51d051,0x51d1e9,0x51d32d,0x51d405,0x51d56d,0x51d801,0x51d825,0x51d8e5,0x51d981,0x51d999,0x51da7d,0x51dad1,0x51dc2d,0x51dc75,0x51dced,0x51dd29,0x51dd7d,0x51e25d,0x51e329,0x51f1d1,0x51f285,0x51f5fd,0x51f8b5,0x51f8e5,0x51f909,0x51f945,0x520bb1,0x520bbd,0x520bd5,0x520c35,0x520d6d,0x520e09,0x5211ed,0x521361,0x521385,0x521c5d,0x521d05,0x523cc1,0x523d99,0x523dbd,0x515a09,0x51d92d,0x51f4a1]
 LOOTBYNAME={
@@ -44,8 +44,8 @@ class Loot:#an item in a room
     self.index=self.category+2+2#2 bytes
     
   def replace(self,item,vanilla,generated):
-    rom.copy(self.category,item.category,vanilla,generated)
-    rom.copy(self.index,item.index,vanilla,generated)
+    vanilla.copy(self.category,item.category,generated)
+    vanilla.copy(self.index,item.index,generated)
     
   def __repr__(self):
     return f'({hex(self.address)} {self.index=} {self.category=})'
@@ -58,8 +58,8 @@ class Item:
     self.priceaddress=self.indexaddress+2+2#4 bytes
     
   def load(self,vanilla):#TODO
-    self.index=rom.readint(self.indexaddress,vanilla)
-    self.price=rom.readint(self.priceaddress,vanilla,4)
+    self.index=vanilla.readint(self.indexaddress)
+    self.price=vanilla.readint(self.priceaddress,4)
     
   def __repr__(self):
     return f'{self.index} ${self.price}'
@@ -80,8 +80,8 @@ indexes={
 def clear(generated):
   for l in loot:
     l=loot[l]
-    rom.write(b'\x00\x00',l.index,generated)
-    rom.write(b'\x01\x00',l.category,generated)
+    generated.write(b'\x00\x00',l.index)
+    generated.write(b'\x01\x00',l.category)
 
 def appraise(category,index,loot,pool):
   top=pool[-1].price#this fallback can be problematic if player learn some fixed loot locations can be very powerful?
@@ -105,8 +105,8 @@ def populate(vanilla,generated):
   for l in loot:
     if args.debug or rpg.chancein(3):
       l=loot[l]
-      i=rom.readint(l.index,vanilla)
-      category=rom.readint(l.category,vanilla)
+      i=vanilla.readint(l.index)
+      category=vanilla.readint(l.category)
       if category in categories.CANDLE:#TODO
         continue
       price=appraise(category,i,l,pool)
@@ -117,8 +117,8 @@ def populate(vanilla,generated):
         continue
       c=rpg.choose(candidates,rpg.low)
       categoryindex=indexes[c.category]
-      rom.writeint(categoryindex.index(c),l.index,generated)
-      rom.writeint(c.category,l.category,generated)
+      generated.writeint(categoryindex.index(c),l.index)
+      generated.writeint(c.category,l.category)
 
 def generate(rewards,vanilla,generated):
   for category in [consumables,weapons,armor]:

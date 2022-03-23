@@ -2,7 +2,7 @@
 # Strategy wiki https://strategywiki.org/wiki/Castlevania:_Aria_of_Sorrow
 #TODO with door-randomizer, make 2-way portals using teleporter rooms!
 #TODO ideally the entrance door randomizer would put the player in a save room?
-import progression,solver,items,shutil,rooms,args,spoilers,shop,rpg,monsters
+import progression,solver,items,shutil,rooms,args,spoilers,shop,rpg,monsters,rom
 
 AREAS=list(progression.areas.keys())
 REWARDS=[progression.BACKDASH[0],progression.GLIDE[0],progression.JUMP[0],progression.SLIDE[0],progression.WATERWALK[0],progression.SINK[0],progression.FLIGHT[0]] #TODO can add good candidates 'Kicker skeleton','Hippogryph','Galamoth', "Black Panther' but is it too much for new players to realize they cleared an area? maybe if removed from elsewhere in the game, arule of "basic move = level cleared" could be a good guideline
@@ -23,8 +23,10 @@ while s==None or not s.solve():
   if rewards[entrance]==progression.FLIGHT[0]:
     continue
   s=solver.Solver(entrance,rewards)
-with open(shutil.copy(args.rom,FILENAME+'.gba'),'r+b') as generated:
-  with open(args.rom,'rb') as vanilla:
+with open(args.rom,'rb') as vanilla:
+  with open(shutil.copy(args.rom,FILENAME+'.gba'),'r+b') as generated:
+    vanilla=rom.Rom(vanilla)
+    generated=rom.Rom(generated)
     monsters.load(vanilla)
     items.generate(rewards,vanilla,generated)
     rooms.generate(s,generated)

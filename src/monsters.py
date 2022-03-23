@@ -1,5 +1,3 @@
-import rom
-
 BYSOUL={category:{} for category in range(0,3+1)}
 
 class Monster:
@@ -18,13 +16,13 @@ class Monster:
     self.soul=[index,category]
     
   def load(self,vanilla):
-    self.drops=[rom.readint(d,vanilla) for d in self.drops]
-    self.hp=rom.readint(self.hp,vanilla)
-    self.mp=rom.readint(self.mp,vanilla)
-    self.xp=rom.readint(self.xp,vanilla)
-    self.attack=rom.readint(self.attack,vanilla,1)
-    self.defense=rom.readint(self.defense,vanilla,1)
-    self.soul=[rom.readint(s,vanilla,1) for s in self.soul]
+    self.drops=[vanilla.readint(d) for d in self.drops]
+    self.hp=vanilla.readint(self.hp)
+    self.mp=vanilla.readint(self.mp)
+    self.xp=vanilla.readint(self.xp)
+    self.attack=vanilla.readint(self.attack,1)
+    self.defense=vanilla.readint(self.defense,1)
+    self.soul=[vanilla.readint(s,1) for s in self.soul]
     
 monsters=[Monster(0xe9644+i*36) for i in range(113)]
 
