@@ -7,7 +7,7 @@ seed=int(time.time())
 instructions={
   'rom':f'Defaults to "{rom}".',
   'seed':'Number or text to be used as RNG seed.',
-  'debug':'If used, a testing-friendly ROM will be created. Will overwrite -seed with "debug"',
+  'debug':'If used, a testing-friendly ROM will be created.',
 }
 
 def setup():
@@ -19,6 +19,6 @@ def setup():
   p=vars(p.parse_args())
   rom=p['rom']
   debug=p['debug']
-  seed='debug' if debug else p['seed']
+  seed=p['seed']
 
 setup()

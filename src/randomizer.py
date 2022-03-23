@@ -15,11 +15,12 @@ while len(REWARDS)<len(AREAS):
 s=None
 while s==None or not s.solve():
   rewards={}
-  rewardpool=list(REWARDS)
-  for area in AREAS:
-    i=rpg.low(0,len(rewardpool)-1)
-    rewards[area]=rewardpool.pop(i)
-  entrance=rpg.choose(AREAS,rpg.high)
+  pool=list(REWARDS)
+  for area in reversed(AREAS):
+    r=rpg.choose(pool,rpg.high)
+    rewards[area]=r
+    pool.remove(r)
+  entrance=rpg.choose(AREAS)
   s=solver.Solver(entrance,rewards)
 with open(args.rom,'rb') as vanilla:
   with open(shutil.copy(args.rom,FILENAME+'.gba'),'r+b') as generated:
