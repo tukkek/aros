@@ -20,8 +20,6 @@ while s==None or not s.solve():
     i=rpg.low(0,len(rewardpool)-1)
     rewards[area]=rewardpool.pop(i)
   entrance=rpg.choose(AREAS,rpg.high)
-  if rewards[entrance]==progression.FLIGHT[0]:
-    continue
   s=solver.Solver(entrance,rewards)
 with open(args.rom,'rb') as vanilla:
   with open(shutil.copy(args.rom,FILENAME+'.gba'),'r+b') as generated:
