@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-import progression,random
+import progression
 
 class Solver:
   def __init__(self,root,rewards):

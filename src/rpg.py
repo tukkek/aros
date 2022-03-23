@@ -1,4 +1,4 @@
-import random
+import random,args
 
 def roll(a,b):
   return random.randint(a,b)
@@ -14,3 +14,6 @@ def low(a,b):
 
 def choose(choices,method=roll):
   return choices[method(0,len(choices)-1)]
+
+def setup():
+  random.seed(args.seed)
