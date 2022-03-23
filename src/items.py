@@ -35,6 +35,8 @@ EXCLUDE=[26+i for i in range(6)] #books and maps
 SHORTSWORD=0x510bf9#first acessible item from Corridor start, for testing
 DASH=0x520bbd#black panther, for testing
 EARLY=[0x510c11,SHORTSWORD,0x51cbf5]#couple rooms near the first Corridor safe, for testing
+SKIP=categories.SOULS+categories.CANDLE
+GOLD=[1,10,50,100,500,1000,2000]#TODO im just assuming this is the right order for now
 
 class Loot:#an item in a room
   def __init__(self,address):
@@ -63,6 +65,7 @@ class Item:
   def __repr__(self):
     return f'{self.index} ${self.price}'
   
+  
 loot={l:Loot(l) for l in LOOT}
 armor={a.address:a for a in [Item(categories.ARMOR,0x5063b0+i*(2+2+4+3+1+2+1+5)) for i in range(45)]}
 consumables={c.address:c for c in [Item(categories.CONSUMABLE,0x505b3c+i*(2+2+4+1+1+2+4)) for i in range(32)]}
@@ -85,11 +88,17 @@ def populate(vanilla,generated):
   pool=sorted((i for i in items if i.price>0 and not i.index in EXCLUDE),key=lambda x:x.price)
   top=pool[-1].price
   for l in loot:
-    if rpg.chancein(3):
+    if args.debug or rpg.chancein(3):
       l=loot[l]
-      index=int.from_bytes(rom.read(vanilla,l.index),byteorder='little')
+      i=int.from_bytes(rom.read(vanilla,l.index),byteorder='little')
       category=int.from_bytes(rom.read(vanilla,l.category),byteorder='little')
-      price=indexes[category][index].price
+      if category in SKIP:#TODO can infer soul prices by price of enemy drops or just fallback to "area max allowed price"...
+        continue
+      price=0
+      if category==categories.GOLD:
+        price=GOLD[i]
+      else:
+        price=indexes[category][i].price
       if price==0:
         if l.address in SELLPRICES:
           price=SELLPRICES[l.address]*2
