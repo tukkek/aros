@@ -6,7 +6,7 @@ ADDRESS=0x004F0D8C
 VALUES={
   progression.CHAPEL:bytes([0x01,0x0E]),
   progression.STUDY:bytes([0x02,0x0C]),
-  progression.HALL:bytes([0x03,0x16]),
+  progression.HALL:bytes([0x03,0x15]),
   progression.QUARTERS:bytes([0x04,0x14]),
   progression.GARDEN:bytes([0x05,0x0C]),
   progression.TOWER:bytes([0x06,0x0F]),

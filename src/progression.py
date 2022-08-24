@@ -60,11 +60,11 @@ teleporters={
   TOP:Solvable([[TOP],FLIGHT])
 }
 
-areas={
+areas={#values<-key map of paths
   CORRIDOR:Solvable(#TODO can you do the boss if you sequence-break?
     access=[teleporters[t].access for t in teleporters if t!=CORRIDOR]+
       [[[RESERVOIR],JUMP,SINK,GLIDE],#TODO test glide and single-jump. glide+jump from teleporter room?
-       [[HALL],JUMP],
+       [[HALL]],
        [[GARDEN]],
        [[TOWER],SINK],
        [[CHAPEL]],#TODO assuming you don't need jump 
@@ -78,12 +78,12 @@ areas={
   STUDY:Solvable(access=[[[CHAPEL]]],completion=[]),
   HALL:Solvable(
     access=
-      [[[CORRIDOR],GLIDE,JUMP],
-       [[QUARTERS],SLIDE,JUMP]], #TODO coming from teleport, can you use less than jump?
+      [[[CORRIDOR],JUMP,GLIDE],
+       [[QUARTERS],SLIDE]], #TODO coming from teleport, can you use less than jump?
     completion=[JUMP]), #TODO do you need jump to complete? can exit through TP rather than quarters
   QUARTERS:Solvable(
     access=#the top entrance is practically a corridor entrance, with the same requriements TODO confirm
-      [[[HALL],JUMP,SLIDE],
+      [[[HALL],SLIDE,JUMP],
        #[[CORRIDOR],GLIDE,JUMP],#TODO can left entrance be used with jump+glide?
        [[CORRIDOR],FLIGHT]],#top floor entrance (either, really)
     completion=[JUMP]),
