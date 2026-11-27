@@ -30,6 +30,19 @@ AROS is an opinionated *Castlevania: Aria of Sorrow* randomizer: instead of allo
 
 You can also run the script in step #4, via a termainl emulator, with the `--help` flag to see more options.
 
+# Cheats
+
+These are only meant to get you unstuck if a seed leaves you with no way forward. You don't need them otherwise.
+
+`cheats/aros.cheats` has CodeBreaker codes that grant a single soul (without touching your other souls) or unlock all warp rooms. To use them in mGBA:
+
+1. Open *Tools > Cheats*, click *Add* and load the file. Every code starts disabled.
+2. Enable only the code you need. It applies right away.
+3. Save at a save room: this is what makes the soul or warp permanent.
+4. Disable the code again. mGBA remembers which cheats are enabled for each ROM, so a code you leave enabled stays on the next time you play.
+
+If you enable a code but don't save, resetting the game undoes it.
+
 # Development
 
 After cloning the repository, configure the versioning commit hook with:

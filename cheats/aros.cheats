@@ -1,0 +1,47 @@
+!disabled
+# Ability soul: Malphas (double jump)
+22013392 0100
+
+!disabled
+# Ability soul: Skeleton Blaze (slide)
+22013392 0010
+
+!disabled
+# Ability soul: Grave Keeper (backdash)
+22013392 0001
+
+!disabled
+# Ability soul: Kicker Skeleton (jump kick)
+22013392 1000
+
+!disabled
+# Ability soul: Hippogryph (high jump) - not placed by AROS
+22013394 0001
+
+!disabled
+# Ability soul: Galamoth (move during time stop) - not placed by AROS
+22013394 0010
+
+!disabled
+# Guardian soul: Flying Armor (glide)
+22013354 0001
+
+!disabled
+# Guardian soul: Giant Bat (bat form)
+22013354 0010
+
+!disabled
+# Guardian soul: Black Panther (dash) - not placed by AROS
+22013354 0100
+
+!disabled
+# Enchanted soul: Undine (walk on water)
+2201336E 0001
+
+!disabled
+# Enchanted soul: Skula (sink in water)
+2201336E 0010
+
+!disabled
+# Unlock all warp rooms
+32000378 00FF

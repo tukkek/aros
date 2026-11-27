@@ -2,3 +2,8 @@ reference/
 __pycache__/
 *.gba
 aros*.txt
+*.sav
+*.ss[0-9]
+aros*.png
+aros.*.cheats
+/aros.cheats
