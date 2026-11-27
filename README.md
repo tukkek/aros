@@ -18,6 +18,9 @@ AROS is an opinionated *Castlevania: Aria of Sorrow* randomizer: instead of allo
 - Similarly, for now, the Cemetery, Forbidden Zone and Chaotic Realm are not featured in the routing logic.
 - AROS tries to perfect one possible vision for the game. This comes at the cost of flexibility and scope.
 
+# Community
+Join us at https://discord.gg/5sXXcwPCSP!
+
 # Setup
 
 1. Install [Python](https://www.python.org/downloads/windows/). Use the advanced installation mode to select a full install and also for Python to be added to your system's `PATH `.
